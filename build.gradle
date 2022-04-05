@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+}
+
+group 'com.tirth.library'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['./src']
+        }
+        resources {
+            srcDirs = ['./resources']
+        }
+    }
+    test {
+        java {
+            srcDirs = ['./test']
+        }
+        resources {
+            srcDirs = ['./resources', './test-resources']
+        }
+    }
+}
