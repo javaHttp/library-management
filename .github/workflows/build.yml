@@ -3,10 +3,10 @@ name: Build
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   test:
@@ -36,4 +36,4 @@ jobs:
           distribution: 'zulu'
       - name: 'Test'
         shell: bash
-        run: ./gradle test
+        run: ./gradlew test
