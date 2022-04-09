@@ -16,7 +16,11 @@
 
 package com.tirth.library;
 
-public class Book {
+import java.io.Serializable;
+
+public class Book implements Serializable {
+
+    private static final long serialVersionUID = 4174440598488135434L;
 
     private final String title;
     private final String author;
