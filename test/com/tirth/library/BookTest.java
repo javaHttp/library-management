@@ -11,7 +11,7 @@ public class BookTest {
     static Book book;
     @BeforeAll
     static void setBook() {
-        book = new Book("Java", "Tirth", 14.5f, 1234, 1);
+        book = new Book("Java", "Tirth", 14.5f, 1);
     }
 
     @Test
@@ -20,7 +20,6 @@ public class BookTest {
         assertEquals("Java", book.getTitle());
         assertEquals("Tirth", book.getAuthor());
         assertEquals(14.5f, book.getPrice());
-        assertEquals(1234, book.getBookId());
     }
 
     @Test

@@ -28,12 +28,12 @@ public class Book implements Serializable {
     private final int bookId;
     private int quantity;
 
-    public Book(String title, String author, float price, int bookId, int quantity) {
+    public Book(String title, String author, float price, int quantity) {
         this.title = title;
         this.author = author;
         this.price = price;
-        this.bookId = bookId;
         this.quantity = quantity;
+        this.bookId = BookIdGenerator.generateBookId();
     }
 
     public String getTitle() {
