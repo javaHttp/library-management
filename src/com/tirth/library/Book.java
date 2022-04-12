@@ -130,4 +130,16 @@ public class Book implements Serializable {
         Book other = (Book) obj;
         return this.bookId == other.bookId;
     }
+
+    /**
+     * Returns a hash code value for the {@code Book} object.
+     *
+     * @return A hash code value for the {@code Book} object
+     */
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + this.bookId;
+        return hash;
+    }
 }
