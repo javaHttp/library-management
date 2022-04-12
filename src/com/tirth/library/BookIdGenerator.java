@@ -62,4 +62,21 @@ public class BookIdGenerator {
             }
         }
     }
+
+    /**
+     * Saves the last bookId generated.
+     */
+    public static void close() {
+        File file = new File("last-book-id.ser");
+        FileOutputStream fileOutputStream = null;
+
+        try {
+            fileOutputStream = new FileOutputStream(file);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(count);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(3);
+        }
+    }
 }
