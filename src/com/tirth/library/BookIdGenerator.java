@@ -16,6 +16,8 @@
 
 package com.tirth.library;
 
+import java.io.*;
+
 /**
  * Generates unique bookId for {@code Book}s to be stored in library.
  *
@@ -23,7 +25,6 @@ package com.tirth.library;
  */
 public class BookIdGenerator {
 
-    private static final int[] bookIds = new int[100];
     private static int count = 0;
 
     /**
@@ -32,29 +33,50 @@ public class BookIdGenerator {
      * @return unique bookId
      */
     public static int generateBookId() {
-        if (count == bookIds.length) {
-            return -1;
-        }
-        int bookId = bookIds[count];
-        count++;
-        return bookId;
+        return count++;
     }
 
     /**
-     * Initializes bookIds array with unique bookIds.
+     * Loads the last bookId generated. Creates new if not loaded.
      */
     public static void init() {
-        for (int i = 0; i < bookIds.length; i++) {
-            int bookId = 0;
-            for (int j = 0; j <= 10; j++) {
-                int n = (int) (Math.random() * 10);
-                if (n == 0) {
-                    j--;
-                    continue;
-                }
-                bookId = bookId * 10 + n;
+        File file = new File("last-book-id.ser");
+        FileInputStream fileInputStream = null;
+
+        if (file.exists()) {
+            try {
+                fileInputStream = new FileInputStream(file);
+                ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+                count = (Integer) objectInputStream.readObject();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.exit(1);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+                System.exit(2);
             }
-            bookIds[i] = bookId;
+        } else {
+            for (int i = 0; i <= 10; i++) {
+                int tempNum = (int) (Math.random() * 100);
+                count = count * 10 + tempNum;
+            }
+        }
+    }
+
+    /**
+     * Saves the last bookId generated.
+     */
+    public static void close() {
+        File file = new File("last-book-id.ser");
+        FileOutputStream fileOutputStream = null;
+
+        try {
+            fileOutputStream = new FileOutputStream(file);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(count);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(3);
         }
     }
 }

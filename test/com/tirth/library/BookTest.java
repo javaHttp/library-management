@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class BookTest {
 
@@ -40,5 +41,24 @@ public class BookTest {
 
         book.removeCopies(copiesToRemove);
         assertEquals(copies - copiesToRemove, book.getQuantity());
+    }
+
+    @Test
+    @DisplayName("Test for book id uniqueness")
+    void testUniqueId() {
+        BookIdGenerator.init();
+
+        Book[] books = new Book[1000];
+        for (int i = 0; i < 1000; i++) {
+            books[i] = new Book("Java", "Tirth", 14.5f, 1);
+        }
+
+        for (Book book : books) {
+            for (Book compareBook : books) {
+                if (!book.equals(compareBook)){
+                    assertNotEquals(book.getBookId(), compareBook.getBookId());
+                }
+            }
+        }
     }
 }
