@@ -112,4 +112,34 @@ public class Book implements Serializable {
         }
         this.quantity -= quantity;
     }
+
+    /**
+     * Compares the specified object with this {@code Book} object for equality.
+     *
+     * @param obj The object to be compared with this {@code Book} object
+     * @return {@code true} if the specified object is equal to this {@code Book} object;
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        Book other = (Book) obj;
+        return this.bookId == other.bookId;
+    }
+
+    /**
+     * Returns a hash code value for the {@code Book} object.
+     *
+     * @return A hash code value for the {@code Book} object
+     */
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + this.bookId;
+        return hash;
+    }
 }
