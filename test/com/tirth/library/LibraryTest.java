@@ -38,4 +38,12 @@ public class LibraryTest {
     void testPasswordChecker() {
         assertTrue(library.checkPassword("something"));
     }
+
+    @Test
+    @DisplayName("Test book search")
+    void testBookSearch() {
+        assertEquals(
+                "Tirth Patel",
+                library.searchBook("Library Management System").getAuthor());
+    }
 }
