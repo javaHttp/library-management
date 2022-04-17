@@ -46,4 +46,12 @@ public class LibraryTest {
                 "Tirth Patel",
                 library.searchBook("Library Management System").getAuthor());
     }
+
+    @Test
+    @DisplayName("Test add book copies")
+    void testAddBookCopies() {
+        library.addBookCopies("Library Management System", 5);
+        assertEquals(6,
+                library.searchBook("Library Management System").getQuantity());
+    }
 }
