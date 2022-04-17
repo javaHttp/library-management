@@ -64,4 +64,13 @@ public class Library implements Serializable {
     public boolean checkPassword(String password) {
         return this.password.equals(password);
     }
+
+    public Book searchBook(String title) {
+        for (Book book : books) {
+            if (book.getTitle().equals(title)) {
+                return book;
+            }
+        }
+        return null;
+    }
 }
