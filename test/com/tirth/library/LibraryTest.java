@@ -49,8 +49,12 @@ public class LibraryTest {
     @Test
     @DisplayName("Test add book copies")
     void testAddBookCopies() {
+        int copiesExisting = library.searchBook("Library Management System").getQuantity();
         library.addBookCopies("Library Management System", 5);
-        assertEquals(6,
+
+        assertEquals(copiesExisting + 5,
+                library.searchBook("Library Management System").getQuantity());
+    }
 
     @Test
     @DisplayName("Test add new book function")
