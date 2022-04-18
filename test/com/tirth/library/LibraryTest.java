@@ -4,8 +4,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class LibraryTest {
 
@@ -52,6 +51,26 @@ public class LibraryTest {
     void testAddBookCopies() {
         library.addBookCopies("Library Management System", 5);
         assertEquals(6,
+
+    @Test
+    @DisplayName("Test add new book function")
+    void testAddNewBook() {
+        Book libBook = new Book(
+                "Library Management System",
+                "Tirth Patel",
+                0,
+                3);
+        int existingCopies = library.searchBook("Library Management System").getQuantity();
+        library.addNewBook(libBook);
+
+        assertEquals(existingCopies + 3,
                 library.searchBook("Library Management System").getQuantity());
+
+        Book physicsForBeginners = new Book("Physics For Beginners",
+                "Tirth Patel",
+                14.5f,
+                20);
+        library.addNewBook(physicsForBeginners);
+        assertNotNull(library.searchBook("Physics For Beginners"), "New book not added");
     }
 }
