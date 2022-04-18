@@ -76,7 +76,7 @@ public class Library implements Serializable {
         return null;
     }
 
-    public void addBookCopies(String name, int quantity) {
+    public void addBookCopies(@NotNull String name, int quantity) {
         Book book = searchBook(name);
         if (book == null)
             throw new IllegalArgumentException("Details of book named \"" + name + "\" not found.");
