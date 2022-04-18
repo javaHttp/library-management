@@ -16,6 +16,8 @@
 
 package com.tirth.library;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -79,5 +81,13 @@ public class Library implements Serializable {
         if (book == null)
             throw new IllegalArgumentException("Details of book named \"" + name + "\" not found.");
         book.addCopies(quantity);
+    }
+
+    public void addNewBook(@NotNull Book book) {
+        Book existingBook = searchBook(book.getTitle());
+        if (existingBook != null)
+            existingBook.addCopies(book.getQuantity());
+        else
+            books.add(book);
     }
 }
