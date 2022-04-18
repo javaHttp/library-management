@@ -77,4 +77,20 @@ public class LibraryTest {
         library.addNewBook(physicsForBeginners);
         assertNotNull(library.searchBook("Physics For Beginners"), "New book not added");
     }
+
+    @Test
+    @DisplayName("Test remove book copies function")
+    void testRemoveBookCopies() {
+        String bookName = "Library Management System";
+        Book book = library.searchBook(bookName);
+
+        int existingCopies = book.getQuantity();
+        if (existingCopies == 0) {
+            library.addBookCopies(bookName, 5);
+        }
+        library.removeBookCopies(bookName, 1);
+
+        assertEquals(existingCopies - 1,
+                library.searchBook(bookName).getQuantity());
+    }
 }
