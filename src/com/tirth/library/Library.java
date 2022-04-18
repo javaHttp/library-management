@@ -90,4 +90,15 @@ public class Library implements Serializable {
         else
             books.add(book);
     }
+
+    public void removeBookCopies(@NotNull String name, int quantity) {
+        Book book = searchBook(name);
+        if (book == null) {
+            throw new IllegalArgumentException(
+                    "Could not remove book copies. Book named \"" +
+                            name +
+                            "\" not found in library.");
+        }
+        book.removeCopies(quantity);
+    }
 }
