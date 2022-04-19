@@ -30,12 +30,12 @@ public class Library implements Serializable {
     private final ArrayList<Book> books;
     private transient String password;
 
-    public Library(String name, String address, String email, String admin, String password) {
+    public Library(String name, String address, String email, String admin) {
         this.name = name;
         this.address = address;
         this.email = email;
         this.admin = admin;
-        this.password = password;
+        this.password = "library123";
 
         this.books = new ArrayList<>();
         books.add(

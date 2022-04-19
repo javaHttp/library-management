@@ -15,8 +15,7 @@ public class LibraryTest {
                 "Tirth's Library",
                 "3/Alien Street, Behind Satellite Showroom, Moon, Earth, Solar System",
                 "no-reply@tirthlibrary.com",
-                "tirth132",
-                "something");
+                "tirth132");
     }
 
     // Test all getters in Library class
@@ -97,8 +96,8 @@ public class LibraryTest {
     @Test
     @DisplayName("Test change password function")
     void testPasswordChange() {
-        String oldPassword = "something";
-        String newPassword = "something2";
+        String oldPassword = "library123";
+        String newPassword = "something";
 
         assertTrue(library.changePassword(oldPassword, newPassword));
         assertTrue(library.checkPassword(newPassword));
