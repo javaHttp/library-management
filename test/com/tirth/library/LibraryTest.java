@@ -93,4 +93,14 @@ public class LibraryTest {
         assertEquals(existingCopies - 1,
                 library.searchBook(bookName).getQuantity());
     }
+
+    @Test
+    @DisplayName("Test change password function")
+    void testPasswordChange() {
+        String oldPassword = "something";
+        String newPassword = "something2";
+
+        assertTrue(library.changePassword(oldPassword, newPassword));
+        assertTrue(library.checkPassword(newPassword));
+    }
 }
