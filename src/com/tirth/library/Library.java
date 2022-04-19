@@ -27,9 +27,8 @@ public class Library implements Serializable {
     private final String address;
     private final String email;
     private final String admin;
-    private final transient String password;
-
     private final ArrayList<Book> books;
+    private transient String password;
 
     public Library(String name, String address, String email, String admin, String password) {
         this.name = name;
@@ -65,6 +64,14 @@ public class Library implements Serializable {
 
     public boolean checkPassword(String password) {
         return this.password.equals(password);
+    }
+
+    public boolean changePassword(String oldPassword, String newPassword) {
+        if (checkPassword(oldPassword)) {
+            this.password = newPassword;
+            return true;
+        }
+        return false;
     }
 
     public Book searchBook(String title) {
