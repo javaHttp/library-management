@@ -34,7 +34,7 @@ public class LibraryTest {
     @Test
     @DisplayName("Test password checker")
     void testPasswordChecker() {
-        assertTrue(library.checkPassword("something"));
+        assertTrue(library.checkPassword("library123"));
     }
 
     @Test
